@@ -1,0 +1,56 @@
+$breakpoints: (
+  "xs": "screen and (max-width: 374px)",
+  "sm": "screen and (max-width: 750px)",
+  "lg": "screen and (min-width: 751px)"
+) !default;
+
+//--細かい方--//
+
+// $breakpoints: (
+//         "xxs": "screen and (max-width: 374px)",
+//         "xs": "screen and (max-width: 450px)",
+//         "sm": "screen and (max-width: 768px)",
+//         "md": "screen and (max-width: 1024px)",
+//         "lg": "screen and (max-width: 1400px)",
+//         "xl": "screen and (min-width: 1401px)"
+// ) !default;
+
+//スマホ版デザイン幅
+$spBasicWidth: 750;
+$font-default: BlinkMacSystemFont, "Helvetica Neue", "Noto Sans Japanese", "ヒラギノ角ゴ ProN W3", Hiragino Kaku Gothic ProN, Arial, Meiryo, sans-serif;
+$font-size-default: 1.5rem;
+$line-hight-default: 1.7;
+
+@mixin xs() {
+  @media #{map-get($breakpoints, "xs")} {
+    @content;
+  }
+}
+
+@mixin sm() {
+  @media #{map-get($breakpoints, "sm")} {
+    @content;
+  }
+}
+
+@mixin lg() {
+  @media #{map-get($breakpoints, "lg")} {
+    @content;
+  }
+}
+
+@mixin svw($width) {
+  width: ($width/$spBasicWidth*100vw);
+}
+
+@mixin svh($height) {
+  height: ($height/$spBasicWidth*100vw);
+}
+
+@mixin sbs($width, $height) {
+  background-size: ($width/$spBasicWidth*100vw) ($height/$spBasicWidth*100vw);
+}
+
+@function smPer($val) {
+  @return percentage($val / $spBasicWidth);
+}
